@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب - جنان</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* أنماط خاصة بصفحة إتمام الطلب */
+        .checkout-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+
+        .checkout-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .checkout-form input[type="text"],
+        .checkout-form input[type="tel"],
+        .checkout-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box; /* لضمان أن العرض يشمل البادينغ والحدود */
+            font-size: 1em;
+        }
+        .checkout-form textarea {
+            resize: vertical; /* السماح بتغيير حجم مربع النص عمودياً */
+            min-height: 100px;
+        }
+
+        .checkout-summary-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px dashed #ccc;
+        }
+
+        .checkout-summary-section h3 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+
+        .checkout-summary-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checkout-summary-section li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            border-bottom: 1px dotted #eee;
+            padding-bottom: 5px;
+        }
+
+        .checkout-summary-section .total-amount {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #E67A00;
+            margin-top: 15px;
+            text-align: left; /* محاذاة لليسار في RTL */
+        }
+
+        .confirm-order-btn {
+            background-color: #388E3C;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .confirm-order-btn:hover {
+            background-color: #2E7D32;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">جنان</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="index.html">المنتجات</a></li>
+                    <li><a href="#">عن جنان</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <a href="cart.html" style="color: white; text-decoration: none;">🛒 <span id="cart-count">0</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h2>إتمام الطلب</h2>
+
+            <div class="checkout-form">
+                <form id="checkout-form">
+                    <div class="checkout-summary-section">
+                        <h3>ملخص طلبك</h3>
+                        <ul id="checkout-products-list">
+                            <!-- المنتجات من السلة ستُعرض هنا -->
+                        </ul>
+                        <div class="total-amount">
+                            الإجمالي الكلي: <span id="checkout-grand-total">0.00 د.ج</span>
+                        </div>
+                    </div>
+
+                    <label for="customer-name">الاسم الكامل:</label>
+                    <input type="text" id="customer-name" name="customerName" required>
+                    <div id="name-error" class="error-message" style="display: none;"></div>
+
+                    <label for="phone-number">رقم الهاتف:</label>
+                    <input type="tel" id="phone-number" name="phoneNumber" required pattern="[0-9]{10,}" title="الرجاء إدخال رقم هاتف صالح (10 أرقام على الأقل)">
+                    <div id="phone-error" class="error-message" style="display: none;"></div>
+
+                    <label for="shipping-address">عنوان الشحن:</label>
+                    <textarea id="shipping-address" name="shippingAddress" rows="4" required></textarea>
+                    <div id="address-error" class="error-message" style="display: none;"></div>
+
+                    <button type="submit" class="confirm-order-btn">تأكيد الطلب والدفع عند الاستلام</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 جنان. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- ملفات JS -->
+    <script src="js/script.js"></script> <!-- لجلب حالة السلة من localStorage -->
+    <script src="js/checkout.js"></script>
+</body>
+</html>

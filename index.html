@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر جنان للمنتجات الزراعية</title>
+    <style>
+        /* أنماط عامة */
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #4CAF50;
+            --accent-color: #FFC107;
+            --dark-color: #1B5E20;
+            --light-color: #E8F5E9;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            direction: rtl;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* شريط معلومات الاتصال العلوي */
+        .contact-info-bar {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+        
+        .contact-info-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-details {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .contact-details span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* الهيدر */
+        .main-header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            color: var(--dark-color);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .main-nav li {
+            margin-left: 20px;
+        }
+
+        .main-nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .main-nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-icon {
+            font-size: 1.5em;
+            position: relative;
+        }
+
+        .cart-icon a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        #cart-count {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        /* قسم البطل */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1200x600?text=جنان+للمنتجات+الزراعية') no-repeat center center;
+            background-size: cover;
+            color: var(--light-text);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #ffb300;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* قسم الخدمات */
+        .services {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--dark-color);
+            margin-bottom: 40px;
+            font-size: 2em;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        /* المحتوى الرئيسي */
+        .main-content {
+            padding: 60px 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* بطاقة المنتج */
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: var(--dark-color);
+        }
+
+        .product-card p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            font-size: 0.8em;
+            color: #999;
+            margin-bottom: 5px;
+            background-color: var(--light-color);
+            padding: 3px 8px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .product-price {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--dark-color);
+        }
+
+        /* قسم الاتصال */
+        .contact {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* الفوتر */
+        .main-footer {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        /* التجاوب */
+        @media (max-width: 768px) {
+            .contact-info-bar .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .contact-details {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+            
+            .main-header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .main-nav li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2em;
+            }
+            
+            .hero p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط معلومات الاتصال العلوي -->
+    <div class="contact-info-bar">
+        <div class="container">
+            <div class="contact-details">
+                <span>📍 غرداية، الجزائر 47000</span>
+                <span>📞 0540351690</span>
+            </div>
+            <div class="social-links">
+                <!-- يمكن إضافة روابط وسائل التواصل الاجتماعي هنا -->
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-icon">ج</div>
+                <h1 class="logo">جنان</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#products">المنتجات</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#about">عن جنان</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-icon">
+                    <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>مرحباً بكم في جنان للمنتجات الزراعية</h2>
+            <p>نوفر لكم أفضل المنتجات الزراعية والخدمات الاستشارية لتطوير مشاريعكم الزراعية وزيادة إنتاجيتها</p>
+            <a href="#products" class="cta-button">استعرض منتجاتنا</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا الزراعية</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌱</div>
+                    <h3>استشارات زراعية</h3>
+                    <p>نقدم استشارات متخصصة للمزارعين لتحسين إنتاجية المحاصيل وإدارة المزارع بكفاءة</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚜</div>
+                    <h3>معدات زراعية</h3>
+                    <p>نوفر أحدث المعدات الزراعية من آلات الحلب وأنظمة الري المتطورة لتحسين العمليات الزراعية</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌾</div>
+                    <h3>منتجات زراعية</h3>
+                    <p>نبيع مستلزمات زراعية عالية الجودة مثل البذور والأسمدة والأعلاف والأواني الزراعية</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🐄</div>
+                    <h3>منتجات حيوانية</h3>
+                    <p>نقدم منتجات حيوانية متنوعة من أبقار ودواجن مع ضمان الجودة والسلامة الغذائية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content" id="products">
+        <div class="container">
+            <h2 class="section-title">منتجاتنا</h2>
+            <div class="products-grid" id="products-container">
+                <!-- المنتجات ستُضاف هنا بواسطة JavaScript -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=بذور+زراعية" alt="بذور زراعية">
+                    <div class="product-card-body">
+                        <span class="product-category">بذور</span>
+                        <h3>بذور خضروات متنوعة</h3>
+                        <p>بذور عالية الجودة للخضروات الموسمية مع ضمان نسبة إنبات عالية</p>
+                        <div class="product-price">25.00 د.ج</div>
+                        <button class="add-to-cart-btn">أضف إلى السلة</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=أسمدة+زراعية" alt="أسمدة زراعية">
+                    <div class="product-card-body">
+                        <span class="product-category">أسمدة</span>
+                        <h3>سماد عضوي طبيعي</h3>
+                        <p>سماد عضوي غني بالمغذيات لتحسين جودة التربة وزيادة إنتاجية المحاصيل</p>
+                        <div class="product-price">45.00 د.ج</div>
+                        <button class="add-to-cart-btn">أضف إلى السلة</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=معدات+ري" alt="معدات ري">
+                    <div class="product-card-body">
+                        <span class="product-category">معدات</span>
+                        <h3>أنابيب ري بالتنقيط</h3>
+                        <p>أنابيب ري عالية الجودة لتوفير المياه وزيادة كفاءة الري في المزارع</p>
+                        <div class="product-price">120.00 د.ج</div>
+                        <button class="add-to-cart-btn">أضف إلى السلة</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=أعلاف+حيوانية" alt="أعلاف حيوانية">
+                    <div class="product-card-body">
+                        <span class="product-category">أعلاف</span>
+                        <h3>علف مخصص للأبقار</h3>
+                        <p>علف متوازن غني بالبروتين والفيتامينات لتحسين إنتاجية الأبقار</p>
+                        <div class="product-price">85.00 د.ج</div>
+                        <button class="add-to-cart-btn">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">اتصل بنا</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>العنوان</h3>
+                    <p>الجزائر، غرداية 47000</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>الهاتف</h3>
+                    <p>0540351690</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🕒</div>
+                    <h3>ساعات العمل</h3>
+                    <p>الأحد - الخميس: 8:00 ص - 5:00 م</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن جنان</h3>
+                    <p>نحن شركة رائدة في مجال المنتجات والخدمات الزراعية، نهدف إلى دعم المزارعين وتطوير القطاع الزراعي في الجزائر.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#about">عن الشركة</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>منتجاتنا</h3>
+                    <ul>
+                        <li><a href="#">البذور</a></li>
+                        <li><a href="#">الأسمدة</a></li>
+                        <li><a href="#">معدات الري</a></li>
+                        <li><a href="#">الأعلاف</a></li>
+                        <li><a href="#">المعدات الزراعية</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 جنان للمنتجات الزراعية. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ربط ملفات JavaScript الأصلية -->
+    <script src="js/script.js"></script>
+    <script>
+        // كود JavaScript لإدارة السلة وعرض المنتجات
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحديث عدد المنتجات في السلة
+            function updateCartCount() {
+                const cartCount = document.getElementById('cart-count');
+                let count = localStorage.getItem('cartCount') || 0;
+                cartCount.textContent = count;
+            }
+            
+            // إضافة منتج إلى السلة
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    let count = parseInt(localStorage.getItem('cartCount') || 0);
+                    count++;
+                    localStorage.setItem('cartCount', count);
+                    updateCartCount();
+                    
+                    // تأثير بسيط عند الإضافة
+                    this.textContent = 'تمت الإضافة ✓';
+                    this.style.backgroundColor = '#4CAF50';
+                    setTimeout(() => {
+                        this.textContent = 'أضف إلى السلة';
+                        this.style.backgroundColor = '';
+                    }, 1500);
+                });
+            });
+            
+            // تحديث عدد المنتجات في السلة عند تحميل الصفحة
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
