@@ -1,0 +1,173 @@
+/* أنماط عامة */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    direction: rtl; /* لجعل النص من اليمين لليسار بشكل افتراضي */
+    text-align: right; /* لمحاذاة النص لليمين */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* الهيدر */
+.main-header {
+    background-color: #4CAF50; /* أخضر زراعي */
+    color: white;
+    padding: 15px 0;
+    border-bottom: 5px solid #388E3C;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-right: 20px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-nav a:hover {
+    text-decoration: underline;
+}
+
+.cart-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+    position: relative;
+}
+
+#cart-count {
+    background-color: #FFC107;
+    color: #333;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.7em;
+    position: absolute;
+    top: -5px;
+    left: -10px; /* للاتجاه من اليمين لليسار */
+}
+
+/* المحتوى الرئيسي */
+.main-content {
+    padding: 40px 0;
+}
+
+.main-content h2 {
+    text-align: center;
+    color: #388E3C;
+    margin-bottom: 30px;
+}
+
+/* شبكة المنتجات */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* تصميم متجاوب */
+    gap: 20px;
+}
+
+/* بطاقة المنتج */
+.product-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex; /* لجعل المحتوى داخل البطاقة مرتبًا */
+    flex-direction: column;
+    justify-content: space-between; /* لدفع الزر للأسفل */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 200px; /* ارتفاع ثابت للصور */
+    object-fit: cover; /* لملء المساحة والحفاظ على الأبعاد */
+    border-bottom: 1px solid #eee;
+}
+
+.product-card-body {
+    padding: 15px;
+    flex-grow: 1; /* لجعل جسم البطاقة يمتد */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* لمحاذاة المحتوى لليمين */
+}
+
+.product-card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #388E3C;
+}
+
+.product-card p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    text-align: right; /* محاذاة النص لليمين */
+}
+
+.product-price {
+    font-size: 1.3em;
+    color: #E67A00; /* لون برتقالي للسعر */
+    font-weight: bold;
+    margin-bottom: 10px;
+    align-self: flex-start; /* لدفع السعر لليسار */
+}
+.product-category {
+    font-size: 0.8em;
+    color: #999;
+    margin-bottom: 5px;
+    align-self: flex-end; /* لدفع التصنيف لليمين */
+}
+
+.add-to-cart-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* لإزالة التسطير من الرابط */
+    display: block; /* لضمان أن الزر يملأ العرض */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #388E3C;
+}
+
+/* الفوتر */
+.main-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
